@@ -1,6 +1,6 @@
 # TDC ONLINE
 
-Este repo são exemplos que foram demostrados na palestra do TDC ONLINE FLORIANÓPOLIS.
+Este repo são exemplos que foram demostrados na palestra Grpc e GO.
 
 Temos exemplos de APIS, RPC e GRPC.
 
@@ -116,3 +116,13 @@ $ go run main.go
 $ CGO_ENABLED=0 go build -ldflags="-s -w" -o grpc.server main.go
 
 ```
+### HTTP/3
+[http/3 docker](https://hub.docker.com/r/ymuski/nginx-quic)
+```bash
+$ docker run --name nginx -d -p 80:80 -p 443:443/tcp -p 443:443/udp \
+-v /etc/letsencrypt/:/opt/nginx/certs/ \
+-v /opt/nginx/conf/example.nginx.conf:/etc/nginx/nginx.conf ymuski/nginx-quic
+```
+
+### Implementação quic-go
+[start guic-go](https://github.com/lucas-clemente/quic-go)
