@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package userdb.pb;
+
+option java_package = "br.com.userdb.generated";
+
+service WorkerService {
+  rpc Get(Job) returns (Reply) {}
+}
+
+message Reply {
+  map<string, bytes> params = 1;
+  bytes original = 2;
+}
+
+message Job {
+  string id = 1;
+  string name = 2;
+}
