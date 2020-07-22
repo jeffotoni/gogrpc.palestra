@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	Port string = ":8001"
+	Port string = ":8002"
 	netl *net.Listener
 )
 
@@ -23,7 +23,7 @@ func (s *User) Get(ctx context.Context, in *user.Job) (*user.Reply, error) {
 	fmt.Printf("\nIn Name:%v", string(in.Name))
 	res := &user.Reply{}
 	res.Params = make(map[string][]byte)
-	res.Params["jeffotoni"] = []byte("tdc online floripa..")
+	res.Params["jeffotoni"] = []byte("Meetup Campinas")
 	return res, nil
 }
 

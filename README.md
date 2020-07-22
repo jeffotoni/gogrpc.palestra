@@ -1,4 +1,4 @@
-# TDC ONLINE
+# Poc Palestra
 
 Este repo são exemplos que foram demostrados na palestra Grpc e GO.
 
