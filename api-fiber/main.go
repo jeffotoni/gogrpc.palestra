@@ -9,7 +9,7 @@ import (
 	"github.com/gofiber/fiber"
 	mw "github.com/gofiber/fiber/middleware"
 
-	_ "github.com/jeffotoni/gcloud.poc/gke/ecommerce.fiber/statik"
+	_ "github.com/jeffotoni/gogrpc.palestra/api-fiber/statik"
 	"github.com/rakyll/statik/fs"
 )
 
