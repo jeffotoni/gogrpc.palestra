@@ -117,6 +117,9 @@ $ CGO_ENABLED=0 go build -ldflags="-s -w" -o grpc.server main.go
 
 ```
 ### HTTP/3
+
+Aqui está passo a passo como configurar o nginx com http/3.
+
 [http/3 docker](https://hub.docker.com/r/ymuski/nginx-quic)
 ```bash
 $ docker run --name nginx -d -p 80:80 -p 443:443/tcp -p 443:443/udp \
@@ -125,4 +128,7 @@ $ docker run --name nginx -d -p 80:80 -p 443:443/tcp -p 443:443/udp \
 ```
 
 ### Implementação quic-go
+
+Aqui está uma implementação em Go sob o protocolo quic para que possa tirar proveito do http/3
+
 [start guic-go](https://github.com/lucas-clemente/quic-go)
