@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	engdb_pb "github.com/jeffotoni/tdconline/grpc/proto"
+	gproto "github.com/jeffotoni/tdconline/grpc/proto"
 	ggrpc "google.golang.org/grpc"
 )
 
@@ -14,7 +14,7 @@ type Client struct {
 	Timeout time.Duration
 }
 
-func (c *Client) Work(job *engdb_pb.Job) (res *engdb_pb.Reply, err error) {
+func (c *Client) Work(job *gproto.Job) (res *gproto.Reply, err error) {
 	conn, err := ggrpc.Dial(c.Host, ggrpc.WithInsecure())
 	fmt.Printf("\nNew connection %v, timeout[%s]", c.Host, c.Timeout)
 	if err != nil {
@@ -28,7 +28,7 @@ func (c *Client) Work(job *engdb_pb.Job) (res *engdb_pb.Reply, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), c.Timeout)
 	defer cancel()
 
-	w := engdb_pb.NewWorkerServiceClient(conn)
+	w := gproto.NewWorkerServiceClient(conn)
 	res, err = w.Get(ctx, job)
 	if err != nil {
 		fmt.Printf("Error performing gRPC work error[%v] \n job[%v]", err, job)
@@ -42,9 +42,9 @@ func main() {
 	fmt.Println(c.Work(createJob()))
 }
 
-func createJob() *engdb_pb.Job {
+func createJob() *gproto.Job {
 	job := &engdb_pb.Job{}
-	job.Name = "Job Eng..2020..."
-	job.Id = "1234696969624696xx"
+	job.Name = "jeffotoni..2020..."
+	job.Id = "123469696934696xx"
 	return job
 }
