@@ -23,7 +23,6 @@ func main() {
 	mux.HandleFunc("/auth", Auth) // post
 	mux.HandleFunc("/user", User) // put / post / get all
 	mux.HandleFunc("/user/uuid", UserOne) // get one / delete
-
 	server := &http.Server{
 		Addr:    "0.0.0.0:8080",
 		Handler: mux,

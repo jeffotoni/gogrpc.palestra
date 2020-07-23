@@ -8,11 +8,8 @@ import (
 func main() {
 
 	mux := http.NewServeMux()
-
 	mux.HandleFunc("/auth", Auth) // post
-
 	mux.HandleFunc("/user", User) // put / post / get all
-
 	mux.HandleFunc("/user/uuid", UserOne) // get one / delete
 
 	server := &http.Server{

@@ -4,6 +4,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net"
 	"net/rpc"
@@ -18,22 +19,43 @@ type Args struct {
 
 type User struct{}
 
+/* {
+	"msg":"meu json para rpc Meetup Campinas!",
+	"name":Marcos","age":"22"
+	}
+ */
+type ClientS struct {
+	Msg string
+	Name string
+	Age int
+}
+
 func (t *User) Get(args *Args, reply *string) error {
 	if len(args.Json) <= 0 {
 		*reply = `{"status":"error", "msg":"json field is required"}`
 		return nil
 	}
+	var c ClientS
+	err := json.Unmarshal([]byte(args.Json), &c)
+	if err!=nil {
+		log.Println("Error Unmarshal:", err)
+		return err
+	}
+	println(".......................................")
+	println("::::::::json:::", args.Json)
+	println("::::::::Name:::", c.Msg)
+	println("::::::::Name:::", c.Name)
+	println("::::::::Name:::", c.Age)
+	println(".......................................")
 	// ... faz algo aqui..
 	*reply = `{"status":"ok", "msg":"User.Get json","id":"38xxx9w9x.."}`
 	return nil
 }
 
 func Rpc() {
-
 	re := new(User)
 	serverRpc := rpc.NewServer()
 	serverRpc.Register(re)
-
 	tcpAddr, err := net.ResolveTCPAddr("tcp", PORT_RPC)
 	if err != nil {
 		log.Println("listen error:", err)

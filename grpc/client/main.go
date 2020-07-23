@@ -38,7 +38,7 @@ func (c *Client) Work(job *engdb_pb.Job) (res *engdb_pb.Reply, err error) {
 }
 
 func main() {
-	var c = Client{"localhost:8001", time.Second * 30}
+	var c = Client{"localhost:8002", time.Second * 30}
 	fmt.Println(c.Work(createJob()))
 }
 
